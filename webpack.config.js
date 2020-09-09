@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     // 模式: 生产环境
-    mode: 'production',
+
     // 入口
     entry: {
         app: path.resolve(__dirname, 'src/index.js')
