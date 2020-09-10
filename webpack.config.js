@@ -15,8 +15,30 @@ module.exports = {
     },
     // 模块加载器
     module: {
-        rules: [
+        rules: [{
+                test: /\.js$/,
+                //exclude: /(node_modules|bower_components)/,
+                include: path.resolve(__dirname, 'src'),
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                },
 
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader'], // 多个loader从右到左处理
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 8192,
+                    name: 'static/img/[name].[hash:7].[ext]' // 相对于output.path
+                }
+            }
         ]
     },
     // 插件
@@ -25,5 +47,11 @@ module.exports = {
             template: 'index.html',
             filename: 'index.html'
         })
-    ]
+    ],
+    devServer: {
+        open: true, // 自动打开浏览器
+        quiet: true, // 不做太多日志输出
+    },
+    devtool: 'cheap-module-eval-source-map',
+
 }
