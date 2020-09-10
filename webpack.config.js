@@ -50,7 +50,7 @@ module.exports = {
     ],
     devServer: {
         open: true, // 自动打开浏览器
-        quiet: true, // 不做太多日志输出
+        // quiet: true, // 不做太多日志输出
     },
     devtool: 'cheap-module-eval-source-map',
 
