@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
     // 模式: 生产环境
@@ -28,6 +29,10 @@ module.exports = {
 
             },
             {
+                test: /\.vue$/,
+                loader: 'vue-loader'
+            },
+            {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader'], // 多个loader从右到左处理
             },
@@ -46,12 +51,19 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: 'index.html',
             filename: 'index.html'
-        })
+        }),
+        new VueLoaderPlugin()
     ],
     devServer: {
         open: true, // 自动打开浏览器
         // quiet: true, // 不做太多日志输出
     },
     devtool: 'cheap-module-eval-source-map',
+    resolve: {
+        extensions: ['.js', '.vue', '.json'], // 可以省略的后缀名
+        alias: { // 路径别名(简写方式)
+            'vue$': 'vue/dist/vue.esm.js', // 表示精准匹配
+        }
+    }
 
 }
