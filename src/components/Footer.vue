@@ -2,7 +2,7 @@
     <div>
         <input type="checkbox" v-model="isChecked">
         <span>已完成{{completed}} / 全部{{todos.length}}</span>
-        <button v-show="todos.length>0" @click='delCompleted'>清除已完成任务</button>
+        <button v-show="completed>0" @click='delCompleted'>清除已完成任务</button>
     </div>
 </template>
 
