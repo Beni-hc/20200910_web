@@ -28,6 +28,7 @@ export default {
             },
             set(value){
                 this.checkedCompleted(value)
+                
             }
             
         }

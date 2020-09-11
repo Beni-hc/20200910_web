@@ -19,7 +19,7 @@ export default {
     },
     methods:{
         deltodo(){
-            if(confirm(`确定删除${this.todo.title}吗？`)){
+            if(window.confirm(`确定删除${this.todo.title}吗？`)){
                 this.delItem(this.index)
             } 
         },
